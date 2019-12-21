@@ -64,7 +64,7 @@ def test_payment_void_gateway_error(
     payment_txn_preauth.refresh_from_db()
     assert payment_txn_preauth.charge_status == ChargeStatus.NOT_CHARGED
     assert payment_txn_preauth.is_active is True
-    assert payment_txn_preauth.transactions.count() == 2
+    assert payment_txn_preauth.transactions.count() == 5
     txn = payment_txn_preauth.transactions.last()
     assert txn.kind == TransactionKind.VOID
     assert not txn.is_success
